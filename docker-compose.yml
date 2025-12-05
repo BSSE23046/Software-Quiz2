@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: devpass
+      POSTGRES_DB: devdb
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: ./backend
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_USER: dev
+      DB_PASS: devpass
+      DB_NAME: devdb
+    ports:
+      - "5000:5000"
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8082:80"
+    depends_on:
+      - backend
+
+volumes:
+  db_data:
