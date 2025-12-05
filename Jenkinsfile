@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/BSSE23046/Software-Quiz2.git'
+                git branch: 'master', url: 'https://github.com/BSSE23046/Software-Quiz2.git'
             }
         }
 
@@ -51,3 +51,4 @@ pipeline {
         }
     }
 }
+
