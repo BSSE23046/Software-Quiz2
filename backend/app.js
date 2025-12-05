@@ -15,7 +15,7 @@ const pool = new Pool({
 app.get('/', async (req, res) => {
   try {
     const result = await pool.query('SELECT NOW()');
-    res.json({ message: 'Hello from backend', time: result.rows[0].now });
+    res.json({ message: 'Hello from backend v2', time: result.rows[0].now });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
