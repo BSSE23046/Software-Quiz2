@@ -15,13 +15,13 @@ pipeline {
         }
 
         stage('Build Docker Image') {
-            steps {
-                script {
-                    docker.build("${IMAGE_NAME}:${IMAGE_TAG}", ".")
-                }
-            }
+    steps {
+        script {
+            // "." changed to "./backend" to point to your folder
+            docker.build("${IMAGE_NAME}:${IMAGE_TAG}", "./backend")
         }
-
+    }
+}
         stage('Push to Docker Hub') {
             steps {
                 script {
@@ -51,4 +51,5 @@ pipeline {
         }
     }
 }
+
 
