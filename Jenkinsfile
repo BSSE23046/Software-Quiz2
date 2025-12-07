@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'mdaniyalhammad/multi-service-app'
+        IMAGE_NAME = 'docker-desktop/multi-service-app'
         IMAGE_TAG  = "v${env.BUILD_NUMBER}"
         K8S_DEPLOYMENT = 'simple-app-deploy'
     }
@@ -51,6 +51,7 @@ pipeline {
         }
     }
 }
+
 
 
 
