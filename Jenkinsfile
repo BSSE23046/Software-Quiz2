@@ -33,15 +33,16 @@ pipeline {
         }
 
         stage('Deploy to Kubernetes') {
-    steps {
-        script {
-            sh """
-            kubectl set image deployment/${K8S_DEPLOYMENT} \
-            backend=${IMAGE_NAME}:${IMAGE_TAG} --record
-            """
+            steps {
+                script {
+                    sh """
+                    kubectl set image deployment/${K8S_DEPLOYMENT} \
+                    backend=${IMAGE_NAME}:${IMAGE_TAG} --record
+                    """
+                }
+            }
         }
     }
-}
 
     post {
         success {
@@ -52,6 +53,7 @@ pipeline {
         }
     }
 }
+
 
 
 
