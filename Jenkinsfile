@@ -32,13 +32,13 @@ pipeline {
             }
         }
 
-    stage('Deploy to Kubernetes') {
+stage('Deploy to Kubernetes') {
     steps {
         script {
             sh """
             export KUBECONFIG=/var/jenkins_home/.kube/config
             kubectl set image deployment/${K8S_DEPLOYMENT} \
-            backend=${IMAGE_NAME}:${IMAGE_TAG} --record
+            simple-app=${IMAGE_NAME}:${IMAGE_TAG}
             """
         }
     }
@@ -55,6 +55,7 @@ pipeline {
         }
     }
 }
+
 
 
 
